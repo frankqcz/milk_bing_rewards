@@ -74,6 +74,9 @@ class account(object):
 
     def earn_desktop_search_awards(self):
         ### print current points ###
+        # the browser has to load the webpage again to make the points visible
+        self.browser.get("https://bing.com")
+        time.sleep(5)
         rewards = self.browser.find_element_by_id("id_rc")
         self.current_points_desktop = int(rewards.text)
         print("The current points are: ", rewards.text)
@@ -108,7 +111,7 @@ class account(object):
                         link.click()
                         time.sleep(random.randint(3,5))
                         self.browser.get("https://bing.com")
-                        time.sleep(5)
+                        time.sleep(10)
                     except:
                         print("No Links")
                 except:
@@ -124,7 +127,8 @@ class account(object):
 
     def earn_mobile_search_awards(self):
         ### print current points ###
-
+        self.browser.get("https://m.bing.com")
+        time.sleep(5)
         target_searches = 20
         while (self.page_searches_mobile <= target_searches):
 
