@@ -84,6 +84,9 @@ class account(object):
         target_points = 150
         while ((self.earned_points_desktop < target_points) and (self.page_searches_desktop<=40)):
 
+            if "Bing" not in self.browser.title:
+                self.browser.get("https://bing.com")
+                time.sleep(5)
             ### find the search bar ###
             searchbar = self.browser.find_element_by_id("sb_form_q")
 
@@ -111,7 +114,7 @@ class account(object):
                         link.click()
                         time.sleep(random.randint(3,5))
                         self.browser.get("https://bing.com")
-                        time.sleep(10)
+                        time.sleep(5)
                     except:
                         print("No Links")
                 except:
@@ -132,6 +135,9 @@ class account(object):
         target_searches = 20
         while (self.page_searches_mobile <= target_searches):
 
+            if "Bing" not in self.browser.title:
+                self.browser.get("https://m.bing.com")
+                time.sleep(5)
             ### find the search bar ###
             searchbar = self.browser.find_element_by_id("sb_form_q")
 
